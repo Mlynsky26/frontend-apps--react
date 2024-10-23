@@ -30,7 +30,8 @@ fs.readFile('src/data/names.txt', 'utf8', (err, data) => {
         obj += `id: "${i + 1}",\n\t`;
         obj += `name: "${names[~~((Math.random() * names.length) / 1)]}",\n\t`;
         obj += `eyeColor: "${colors[~~((Math.random() * colors.length) / 1)]}",\n\t`;
-        obj += `birthDate: "${randomDate(new Date(1970, 0, 1), new Date(2005, 11, 31)).toLocaleDateString("en-GB")}"\n`;
+        obj += `birthDate: "${randomDate(new Date(1970, 0, 1), new Date(2005, 11, 31)).toLocaleDateString("en-GB")}",\n\t`;
+        obj += `rating: ${Math.floor(Math.random() * 11)}\n`;
         obj += '},\n'
 
         content += obj

@@ -5,7 +5,7 @@ function Lab1() {
         <div className='container'>
             <h1>Osoby</h1>
             <div className='row row-cols-3 g-3'>
-                {data.map((person, index) => <PersonProfile key={person.id} person={person} />)}
+                {data.map((person, index) => <PersonProfile key={person.id} {...person} />)}
             </div>
         </div>
     );

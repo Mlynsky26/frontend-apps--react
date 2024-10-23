@@ -13,7 +13,7 @@ function Lab2() {
 
     return (
         <div className='container'>
-             <PersonProfile person={person} />
+             <PersonProfile {...person} />
         </div>
     );
 }
