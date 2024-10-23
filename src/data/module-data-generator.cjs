@@ -7,7 +7,7 @@ function randomDate(start, end) {
     return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
 }                   // tablica z obiektami 
 
-fs.readFile('generator/names.txt', 'utf8', (err, data) => {
+fs.readFile('src/data/names.txt', 'utf8', (err, data) => {
     if (err) {
         console.error(err);
         return;
@@ -37,7 +37,7 @@ fs.readFile('generator/names.txt', 'utf8', (err, data) => {
     }
     content += "];"
     //zapis łańcucha do pliku 
-    fs.writeFile('src/module-data.js', content, (err) => {
+    fs.writeFile('src/data/module-data.js', content, (err) => {
         if (err) {
             console.error(err);
         }
