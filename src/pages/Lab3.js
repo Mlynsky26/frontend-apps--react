@@ -1,11 +1,14 @@
-import { data } from '../data/module-data' 
 import PersonProfile from '../components/PersonProfile'
 import FlexContainer from '../components/FlexContainer';
+import { useContext } from 'react';
+import AppContext from '../data/AppContext';
 
-function lab3() {
+function Lab3() {
+    const context = useContext(AppContext);
+    const items = context.items;
     return (
-        <FlexContainer data={data} element={PersonProfile}></FlexContainer>
+        <FlexContainer data={items} element={PersonProfile}></FlexContainer>
     );
 }
 
-export default lab3;
+export default Lab3;

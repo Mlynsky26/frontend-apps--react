@@ -1,6 +1,7 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import { Link} from "react-router-dom";
 
 function NavbarMenu({items}) {
   return (
@@ -10,7 +11,7 @@ function NavbarMenu({items}) {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            {items.filter(item => !item.disableInMenu).map(item => <Nav.Link href={item.url} key={item.id}>{item.label}</Nav.Link>)}
+            {items.filter(item => !item.disableInMenu).map(item => <Link to={item.url} key={item.id} className='nav-link'>{item.label}</Link>)}
           </Nav>
         </Navbar.Collapse>
       </Container>

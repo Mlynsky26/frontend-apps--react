@@ -1,11 +1,14 @@
-import { data } from '../data/module-data' 
+import { useContext } from 'react';
 import PersonProfile from '../components/PersonProfile'
+import AppContext from '../data/AppContext';
 function Lab1() {
+    const context = useContext(AppContext);
+    const items = context.items;
     return (
         <div className='container'>
             <h1>Osoby</h1>
             <div className='row row-cols-3 g-3'>
-                {data.map((person, index) => <PersonProfile key={person.id} {...person} />)}
+                {items.map((person, index) => <PersonProfile key={person.id} {...person} />)}
             </div>
         </div>
     );

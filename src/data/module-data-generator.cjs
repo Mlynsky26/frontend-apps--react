@@ -14,7 +14,6 @@ fs.readFile('src/data/names.txt', 'utf8', (err, data) => {
     }
     //podział łańcucha z imionami na wiersze.
     names = data.split("\n").map(s => s.trim()).filter(n => n.length != 0);
-    console.log(names);
     const colors = [
         'blue',
         'brown',
@@ -27,7 +26,7 @@ fs.readFile('src/data/names.txt', 'utf8', (err, data) => {
     for (let i = 0; i < count; i++) {
         //losowanie imienia z bilioteki imion
         let obj = '{\n\t'
-        obj += `id: "${i + 1}",\n\t`;
+        obj += `id: ${i + 1},\n\t`;
         obj += `name: "${names[~~((Math.random() * names.length) / 1)]}",\n\t`;
         obj += `eyeColor: "${colors[~~((Math.random() * colors.length) / 1)]}",\n\t`;
         obj += `birthDate: "${randomDate(new Date(1970, 0, 1), new Date(2005, 11, 31)).toLocaleDateString("en-GB")}",\n\t`;
