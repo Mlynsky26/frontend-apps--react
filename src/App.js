@@ -1,7 +1,6 @@
-import React, { useReducer, useState } from 'react';
+import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import RootLayout from './layouts/RootLayout';
-import { data } from './data/module-data'
 import Home from './pages/Home';
 import Lab1 from './pages/Lab1';
 import Lab2 from './pages/Lab2';
@@ -10,8 +9,10 @@ import Lab4Add from './pages/Lab4Add';
 import Lab4Edit from './pages/Lab4Edit';
 import NotFound from './pages/NotFound';
 import './App.css';
-import AppReducer from './data/AppReducer';
-import AppContext from './data/AppContext';
+import AppProvider from './data/AppProvider';
+import Lab5 from './pages/Lab5';
+import Lab5User from './pages/Lab5User';
+import Lab5Comments from './pages/Lab5Comments';
 
 
 const menuItems = [
@@ -59,6 +60,29 @@ const menuItems = [
   },
   {
     id: 7,
+    label: "Lab5",
+    url: "/lab5",
+    urlPattern: "/lab5",
+    element: <Lab5 />
+  },
+  {
+    id: 8,
+    label: "Lab5",
+    url: "/lab5/users/1",
+    urlPattern: "/lab5/users/:id",
+    element: <Lab5User />,
+    disableInMenu: true
+  },
+  {
+    id: 9,
+    label: "Lab5",
+    url: "/lab5/comments/1",
+    urlPattern: "/lab5/comments/:id",
+    element: <Lab5Comments />,
+    disableInMenu: true
+  },
+  {
+    id: 100,
     label: "Not Found",
     url: "/*",
     urlPattern: "*",
@@ -68,12 +92,8 @@ const menuItems = [
 ];
 
 function App() {
-  const [items, appDispatch] = useReducer(AppReducer, [...data]);
-
-  const [maxId, setMaxId] = useState(Math.max(...data.map(item => item.id)) | 0)
-
   return (
-    <AppContext.Provider value={{ items: items, dispatch: appDispatch, maxId, setMaxId }}>
+    <AppProvider>
       <RootLayout items={menuItems}>
         <Routes>
           {
@@ -83,8 +103,7 @@ function App() {
           }
         </Routes>
       </RootLayout>
-    </AppContext.Provider>
-
+    </AppProvider>
   );
 }
 

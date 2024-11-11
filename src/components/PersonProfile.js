@@ -1,11 +1,9 @@
-import { useContext} from "react";
 import RatingBar from "./RatingBar";
-import AppContext from "../data/AppContext";
 import { Link } from "react-router-dom";
+import { useDispatch } from "../data/UseData";
 
 function PersonProfile({ id, name, eyeColor, birthDate, rating}) {
-    const context = useContext(AppContext);
-    const dispatch = context.dispatch;
+    const dispatch = useDispatch();
     
     const onRate = () =>  {
         dispatch({

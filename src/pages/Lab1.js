@@ -1,9 +1,7 @@
-import { useContext } from 'react';
 import PersonProfile from '../components/PersonProfile'
-import AppContext from '../data/AppContext';
+import { useData } from '../data/UseData';
 function Lab1() {
-    const context = useContext(AppContext);
-    const items = context.items;
+    const items = useData();
     return (
         <div className='container'>
             <h1>Osoby</h1>

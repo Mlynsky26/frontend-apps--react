@@ -1,7 +1,7 @@
-import AppContext from '../data/AppContext';
 import { Button, Container, Form, FormControl } from "react-bootstrap";
-import { useState, useContext } from "react";
+import { useState } from "react";
 import Lab3 from './Lab3';
+import { useDispatch, useMaxId, useSetMaxId } from '../data/UseData';
 
 const nameField = "name";
 const eyeColorField = "eyeColor";
@@ -17,8 +17,9 @@ const colors = [
 ]
 
 function Lab4Add() {
-    const context = useContext(AppContext);
-    const dispatch = context.dispatch;
+    const dispatch = useDispatch();
+    const maxId = useMaxId();
+    const setMaxId = useSetMaxId();
 
     const [errors, setErrors] = useState([]);        // stan kominikatów błędów
     const [isSendig, setSending] = useState(false);  // stan sygnalizujący wysyłanie
@@ -33,7 +34,7 @@ function Lab4Add() {
         setSending(true);
         setErrors([])
 
-        const newId = context.maxId + 1
+        const newId = maxId + 1
         const item = {
             id: newId,
             name: data.get(nameField),
@@ -47,7 +48,7 @@ function Lab4Add() {
             item : item
         });
 
-        context.setMaxId(newId)
+        setMaxId(newId)
 
         for (let key of data.keys()) {                               //reset formularza
             e.target[key].value = "";

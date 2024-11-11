@@ -1,9 +1,8 @@
-import { useContext } from 'react';
-import AppContext from '../data/AppContext';
 import { useParams } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { Form as BsForm } from "react-bootstrap";
 import Lab3 from './Lab3';
+import { useData, useDispatch } from '../data/UseData';
 
 const colors = [
     'blue',
@@ -14,9 +13,8 @@ const colors = [
 ]
 
 function Lab4Edit() {
-    const context = useContext(AppContext);
-    const dispatch = context.dispatch
-    const items = context.items;
+    const dispatch = useDispatch()
+    const items = useData();
     const { id } = useParams();
     const parsedId = parseInt(id)
     if (!parsedId)
@@ -30,6 +28,7 @@ function Lab4Edit() {
     return (
         <div className='container'>
             <Formik
+            key={id}
                 initialValues={{ name: person.name, eyeColor: person.eyeColor, rating: person.rating, birthDate: person.birthDate.split('/').reverse().join('-') }}
                 validate={values => {
                     const errors = {};
